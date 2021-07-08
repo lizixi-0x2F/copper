@@ -1,3 +1,6 @@
+/*
+Author : Zixi Lee
+*/
 #include <SoftwareSerial.h>
 #include <DHT.h>
 
