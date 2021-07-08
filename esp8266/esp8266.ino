@@ -7,7 +7,7 @@
 WiFiClient wifiClient;
 PubSubClient mqttClient(wifiClient);
 Ticker ticker;
-int count;
+int count=0;
 const char *ssid = "lizixi";
 const char *passwd = "Lizixi060407";
 SoftwareSerial RxSerial(2, 5);
