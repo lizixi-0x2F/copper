@@ -1,3 +1,10 @@
+/**
+ * 项目名称		：		copper
+ * 程序名称		：		esp8266
+ * 目的				：		通过物联网温湿度计来实践MQTT协议和串口通讯
+ * 作者				：		籽溪
+ * 时间(YYYYMMDD)			:			20210710
+*/
 #include <Ticker.h>
 #include <SoftwareSerial.h>
 #include <ESP8266WiFi.h>

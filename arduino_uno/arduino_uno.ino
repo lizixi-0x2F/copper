@@ -1,5 +1,9 @@
-/*
-Author : Zixi Lee
+/**
+ * 项目名称		：		copper
+ * 程序名称		：		arduino_uno
+ * 目的				：		通过物联网温湿度计来实践MQTT协议和串口通讯
+ * 作者				：		籽溪
+ * 时间(YYYYMMDD)			:			20210710
 */
 #include <SoftwareSerial.h>
 #include <DHT.h>
