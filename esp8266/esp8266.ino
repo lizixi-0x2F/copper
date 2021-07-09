@@ -1,6 +1,7 @@
 /**
  * 项目名称		：		copper
  * 程序名称		：		esp8266
+ * 开发板			：		NodeMcu1.0 (ESP12-Model)
  * 目的				：		通过物联网温湿度计来实践MQTT协议和串口通讯
  * 作者				：		籽溪
  * 时间(YYYYMMDD)			:			20210710
@@ -17,20 +18,20 @@ Ticker ticker;
 int count = 0;
 const char *ssid = "SSID";
 const char *passwd = "PASSWORD";
-SoftwareSerial RxSerial(2, 5);
+SoftwareSerial RxSerial(2, 5); //设置串口读取信息
 char value[31];
-const char *mqttServer = "test.ranye-iot.net";
+const char *mqttServer = "test.ranye-iot.net"; //定义MQTT伺服器地址
 
 void setup()
 {
 	Serial.begin(9600);
 	RxSerial.begin(9600);
 	WiFi.mode(WIFI_STA);
-	connectWiFi();
+	connectWiFi(); //链接无线网
 
-	mqttClient.setServer(mqttServer, 1883);
+	mqttClient.setServer(mqttServer, 1883); //设置MQTT参数,端口号1883
 	connectMQTTServer();
-	ticker.attach(1, tickerCount);
+	ticker.attach(1, tickerCount); //设置计时器,五秒钟发送一次串口信息到MQTT伺服器
 }
 
 void loop()
@@ -48,7 +49,7 @@ void loop()
 				pubMQTTmsg(value);
 				count = 0;
 			}
-			mqttClient.loop();
+			mqttClient.loop(); //保持心跳机制
 		}
 		else
 		{
@@ -92,7 +93,7 @@ void connectMQTTServer()
 }
 void pubMQTTmsg(const char *publishMsg)
 {
-	String topicString = "0x2F-HT";
+	String topicString = "0x2F-HT"; //发布的主题名,主题千万别重复要不会撞车
 	char publishTopic[topicString.length() + 1];
 	strcpy(publishTopic, topicString.c_str());
 	if (mqttClient.publish(publishTopic, publishMsg))
