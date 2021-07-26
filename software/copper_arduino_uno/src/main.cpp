@@ -10,7 +10,7 @@
 #include <DHT.h>
 
 #define DHTTYPE DHT11 //设置测温模块型号
-#define DHTPIN 2 //设置测温模块所在的引脚
+#define DHTPIN 2      //设置测温模块所在的引脚
 
 DHT dht(DHTPIN, DHTTYPE);
 SoftwareSerial mySerial(6, 7); //定义到ESP8266的通讯串口
@@ -20,7 +20,7 @@ void setup()
   Serial.begin(9600);
   Serial.println("MySerial Is Ready");
   mySerial.begin(9600); //串口初始化
-  dht.begin();					//测温模块初始化
+  dht.begin();          //测温模块初始化
 }
 void loop()
 {
